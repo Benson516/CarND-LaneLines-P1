@@ -21,25 +21,25 @@ The goals / steps of this project are the following:
 ## 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
 My pipeline consisted of 5 steps:
-1. Morphological Openration on Color Image
-2. Low-pass filtering and Canny
-3. Selecting ROI
-4. Applying Hough-line Algorithm 
-5. Blending line on image
+- Morphological Openration on Color Image
+- Low-pass filtering and Canny
+- Selecting ROI
+- Applying Hough-line Algorithm 
+- Blending line on image
 
-**Morphological Openration on Color Image**
+**1. Morphological Openration on Color Image**
 Using morphological opening on original color image and get the local average of the intensity/color. Then substract the original color image by this local average to generate the local differences. This resulted in removal of effect by lightening/shadow and difference in road color (which occured in challenge.mp4)
 
-**Low-pass filtering and Canny**
+**2. Low-pass filtering and Canny**
 Low-pass filtering using Gaussian-blur and then apply canny.
 
-**Selecting ROI**
+**3. Selecting ROI**
 Sellecting ROI to remove the region such as sky
 
-**Applying Hough-line Algorithm**
+**4. Applying Hough-line Algorithm**
 Applying Hough-line algorithm for finding line segments, as well as drawing lines onto a blank image 
 
-**Blending line on image**
+**5. Blending line on image**
 Blending the original image with the line-image as final result
 
 
