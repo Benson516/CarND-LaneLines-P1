@@ -117,11 +117,13 @@ The current pipeline comes with many shortcomings. Some straightly come form the
 
 Another are the limitations of the algorithm I used:
 
+- The hard-coded thresholds in canny and Hough might not generally worked, especially when the lightening condition changed.
+- The perspective geometry of photography limit the usage of morphological operations, since things appear larger when they were close and smaller when ithey were far.
 - The lane classification uses only slop of line segments to determin whether the line segment belongs to right, left, or noise, which can easily generate wrong result. For example, the short line with small possitive slop on the left will also be classified as right lane.
-- The line fitting 
+- The line fitting algorithm is highly sensitive to outliers form wrong classification mentioned above, which can even generate lines with opposite slop, e.g. the slop of the estimation for right line become negative. 
 
 ## 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+- One possible solution for the threshold problems can be adaptive image enhancement method which adjust the average intensitive of image to the same value no matter the scene is dark or light. Another may be using statistical properties of each image to determine the threshoulds.
+- One possible solution for the line classification and fitting problem is to use clustering algorithm like k-means to separate the line segments and produce better fit. Another possible solution for classification and fitting problem is using random sample consensus (RANSAC) to find inliers.
 
-Another potential improvement could be to ...
