@@ -80,7 +80,7 @@ There are three main works to be done in this step:
 - Classify and statistically summarize the line segments as parameters of linear equations of left/right lane
 - Draw lines on a blank canvas 
 
-With the clear edges from the previous step, the Hough-line algorithm can precisely find out end points of each line-segment.
+With the clear edges from the previous step, the Hough-line algorithm can precisely find out end points of each line-segment. The next challenge is to classify the lines as well as combine all the line-segments at the same side to a single line. This method will be described below.
 
 ![alt text][image_7]
 Fig. 7 Lines drawn on a blank canvas, where the magenta lines are line segments detected by Hough-line algorithm, and the red thick lines are the estimated left/right lane lines
@@ -97,22 +97,28 @@ Fig. 8 The final result: blending the original image with the line-image.
 
 
 
+
+
+### **Estimating Right/Left Lane Line form Line Segments**
+
 In order to draw a single line on the left and right lanes, I rewrite the draw_lines() function as draw_lines_thick_2() function. In draw_lines_thick_2() function, 
 
-I modified the draw_lines() function by ...
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image_0]
 
 
 ## 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+The current pipeline comes with many shortcomings. Some straightly come form the assumptions it makes, including:
 
-Another shortcoming could be ...
+- The prior knowledge of ROI and slop of lane only work if the car is already straight on the lane. When the car change lanes or deviate from lane, the algorithm might fail.
+- If the lane is not straight, i.e. a turn, the estimated line fitted on it is somewhat meaningless
 
+Another are the limitations of the algorithm I used:
+
+- The lane classification uses only slop of line segments to determin whether the line segment belongs to right, left, or noise, which can easily generate wrong result. For example, the short line with small possitive slop on the left will also be classified as right lane.
+- The line fitting 
 
 ## 3. Suggest possible improvements to your pipeline
 
