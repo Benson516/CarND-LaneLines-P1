@@ -132,11 +132,11 @@ In second step, points of line segment in the same class are fit to a line. Each
 
 Here is the challenge.mp4 marked with lines:
 
-[![Alternate Text](./test_videos_output/challenge_ori_lane.png)](./test_videos_output/challenge.mp4)
+[![Alternate Text](./test_videos_output/challenge_ori_lane.png)](https://youtu.be/vEyg08KZ4yE)
 
 In additions, the following video demonstrate how the morphological operation is in action:
 
-[![Alternate Text](./test_videos_output/img_mor/challenge_mor_lane.png)](./test_videos_output/img_mor/challenge.mp4)
+[![Alternate Text](./test_videos_output/img_mor/challenge_mor_lane.png)](https://youtu.be/Bt81sA3qzrI)
 
 ## 2. Identify potential shortcomings with your current pipeline
 
