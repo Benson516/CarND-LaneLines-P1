@@ -128,7 +128,7 @@ which is opposite to the normal definitions. Since that the lane line is prone t
 
 In second step, points of line segment in the same class are fit to a line. Each point are weight propotional to the length of line segment since it would be more likely to be the correct line for long segments. I use the numpy.polyfit() function to fit the line. The problem with this function is that it can not give weight for each sample, so I simply duplicate each sample as many times as their weight.
 
-### Result
+### Results
 
 Here is the challenge.mp4 marked with lines:
 
