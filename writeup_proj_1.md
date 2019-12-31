@@ -89,8 +89,11 @@ Fig. 7 Lines drawn on a blank canvas, where the magenta lines are line segments 
 
 The final step is to blend the original color image with the lane-line image from the previous step and return as final result. The blending using the following equation
 
-$$P_{out,i,j} = 0.8 P_{original,i,j} + 1.0 P_{lines, i,j},$$ 
-where the $P_{out,i,j}$, $P_{original,i,j}$, and $P_{lines,i,j}$ are pixel at $(i,j)$ of output image, original image, and line image repectively.
+```
+pixel_out(i,j) = 0.8 * pixel_original(i,j) + 1.0 * pixel_lines(i,j), 
+```
+
+where the pixel_out(i,j), pixel_original(i,j), and pixel_lines(i,j) are pixel at (i,j) of output image, original image, and line image repectively.
 
 ![alt text][image_8]
 Fig. 8 The final result: blending the original image with the line-image. 
@@ -115,7 +118,9 @@ The first step classify each line segment into three classes:
 
 Note that the slop is defined in the following equation
 
-$$slop = \dfrac{x_2-x_1}{y_2-y_1},$$
+```
+slop = (x2-x1)/(y2-y1),
+```
 
 which is opposite to the normal definitions. Since that the lane line is prone to be vertical line in image, this definition is more numerically stable than the normal definition in this case.
 
