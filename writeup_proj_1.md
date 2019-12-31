@@ -101,11 +101,25 @@ Fig. 8 The final result: blending the original image with the line-image.
 
 ### **Estimating Right/Left Lane Line form Line Segments**
 
-In order to draw a single line on the left and right lanes, I rewrite the draw_lines() function as draw_lines_thick_2() function. In draw_lines_thick_2() function, 
+In order to draw a single line on the left and right lanes, I rewrite the draw_lines() function as draw_lines_thick_2() function. 
 
+In draw_lines_thick_2() function, I use simple ideas to generate the two lines we want.
 
+- Classify the line segments from Hough-line algorithm by slop
+- Fit a line according to end-points of line segments in each class, while weighting each endpoints propotional to the square of the length of the line segment.
 
+The first step classify each line segment into three classes:
+- Right lane: slop > 0 and |slop| < 3
+- Left lane: slop < 0 and |slop| < 3
+- Noise: |slop| >= 3
 
+Note that the slop is defined in the following equation
+
+$$slop = \dfrac{x_2-x_1}{y_2-y_1},$$
+
+which is opposite to the normal definitions. Since that the lane line is prone to be vertical line in image, this definition is more numerically stable than the normal definition in this case.
+
+In second step, points of line segment in the same class are fit to a line. Each point are weight propotional to the length of line segment since it would be more likely to be the correct line for long segments. I use the numpy.polyfit() function to fit the line. The problem with this function is that it can not give weight for each sample, so I simply duplicate each sample as many times as their weight.
 
 ## 2. Identify potential shortcomings with your current pipeline
 
