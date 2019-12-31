@@ -22,6 +22,8 @@ The goals / steps of this project are the following:
 [image_7]: ./test_images_output/steps/solidYellowCurve_color_line_drawn.jpg "color_line_drawn"
 [image_8]: ./test_images_output/steps/solidYellowCurve_img_proc.jpg "img_proc"
 
+
+
 ---
 
 # Reflection
@@ -125,6 +127,16 @@ slop = (x2-x1)/(y2-y1),
 which is opposite to the normal definitions. Since that the lane line is prone to be vertical line in image, this definition is more numerically stable than the normal definition in this case.
 
 In second step, points of line segment in the same class are fit to a line. Each point are weight propotional to the length of line segment since it would be more likely to be the correct line for long segments. I use the numpy.polyfit() function to fit the line. The problem with this function is that it can not give weight for each sample, so I simply duplicate each sample as many times as their weight.
+
+### Result
+
+Here is the challenge.mp4 marked with lines:
+
+[![Alternate Text](./test_videos_output/challenge_ori_lane.png)](./test_videos_output/challenge.mp4)
+
+In additions, the following video demonstrate how the morphological operation is in action:
+
+[![Alternate Text](./test_videos_output/img_mor/challenge_mor_lane.png)](./test_videos_output/img_mor/challenge.mp4)
 
 ## 2. Identify potential shortcomings with your current pipeline
 
